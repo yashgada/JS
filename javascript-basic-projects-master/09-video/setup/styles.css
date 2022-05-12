@@ -186,6 +186,7 @@ Video
   left: 0;
   right: 0;
   bottom: 0;
+  /* inset: 0; */
   background: var(--clr-white);
   display: grid;
   justify-content: center;
@@ -255,7 +256,7 @@ h1 {
   left: 50%;
 }
 /* header after */
-/* header::after {
+header::after {
   content: "";
   position: absolute;
   top: 0;
@@ -264,4 +265,4 @@ h1 {
   height: 100%;
   background: rgba(0, 0, 0, 0.7);
   z-index: -1;
-} */
+}

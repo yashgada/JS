@@ -184,6 +184,9 @@ About
   text-align: center;
   margin-bottom: 4rem;
 }
+*{
+  /* border: 1px solid red; */
+}
 .title p {
   width: 80%;
   margin: 0 auto;
@@ -199,18 +202,18 @@ About
 }
 @media screen and (min-width: 992px) {
   .about-img {
-    margin-bottom: 0;
+    /* margin-bottom: 0; */
   }
-
+/*  */
   .about-center {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 2rem;
+    /* display: grid; */
+    /* grid-template-columns: 1fr 1fr; */
+    /* column-gap: 2rem; */
   }
 }
 .about {
-  background: var(--clr-white);
   border-radius: var(--radius);
+  background: var(--clr-white);
   display: grid;
   grid-template-rows: auto 1fr;
 }
@@ -231,7 +234,7 @@ About
   border: none;
   text-transform: capitalize;
   font-size: 1rem;
-  display: block;
+  display: block; /* Not sure why this */
   background: var(--clr-grey-9);
   cursor: pointer;
   transition: var(--transition);
@@ -256,3 +259,4 @@ About
 .content.active {
   display: block;
 }
+/*  */

@@ -11,3 +11,29 @@ I just told you! You've killed me! Fry! Quit doing the right thing, you jerk! Mi
   `Man braid celiac synth freegan readymade, pitchfork fam salvia waistcoat lomo bitters gentrify four loko. Pitchfork semiotics post-ironic vegan. Tofu meditation microdosing hashtag semiotics venmo. Flexitarian vape tilde taiyaki. Prism poutine farm-to-table, messenger bag vegan taxidermy tattooed sartorial squid jean shorts fixie selvage trust fund vape.`,
   `Rutters Plate Fleet boom chandler Brethren of the Coast handsomely lookout marooned brigantine knave. Buccaneer gangway jack rum loot spyglass line Jack Tar fore gaff. Gaff topmast scuttle ballast swab draught measured fer yer chains dance the hempen jig Chain Shot yardarm.`,
 ];
+
+const amount = document.getElementById("amount");
+const form = document.querySelector(".lorem-form");
+const article = document.querySelector(".lorem-text");
+
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+  const value = parseInt(amount.value);
+  // console.log(value);
+
+  // Always use text.length in place of hard coded length values
+  const random = Math.floor(Math.random() * text.length);
+
+  // Check the submitted values and
+  if (isNaN(value) || value < 1 || value > 9) {
+    article.innerHTML = `${text[random]}`;
+  } else {
+    let tempText = text.slice(0, value);
+    tempText = tempText
+      .map(function (item) {
+        return `<p class="result">${item}</p>`;
+      }).join('')
+      console.log(tempText);
+    article.innerHTML = tempText;
+  }
+});

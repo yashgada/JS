@@ -10,7 +10,12 @@ Global Styles
   --clr-primary: #d23669;
   --clr-grey: #64748b;
 }
-
+.dark-theme{
+  --clr-bcg: rgb(30, 24, 24);
+  --clr-font: #ffffff;
+  --clr-primary: #ffa7c4;
+  --clr-grey: #cbd5e1;
+}
 *,
 ::after,
 ::before {

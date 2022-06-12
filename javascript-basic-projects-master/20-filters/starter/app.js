@@ -1,5 +1,5 @@
 let filteredProducts = [...products];
-const standard = [...products]
+const standard = [...products];
 const productsContainer = document.querySelector(".products-container");
 const form = document.querySelector(".input-form");
 const searchInput = document.querySelector(".search-input");
@@ -13,9 +13,8 @@ form.addEventListener("keyup", () => {
   displayProducts(filteredProducts);
 });
 
-
 const displayProducts = (products = products) => {
-// const displayProducts = (products = standard) => {
+  // const displayProducts = (products = standard) => {
   if (products.length < 1) {
     productsContainer.innerHTML = "<h6>No products here</h6>";
     return;
@@ -60,10 +59,13 @@ companiesDOM.addEventListener("click", (e) => {
   const el = e.target;
   if (el.classList.contains("company-btn")) {
     if (el.dataset.id === "all") {
-      displayProducts();
-      console.log("all clicked!");
-      return;
+      filteredProducts = [...products];
+    } else {
+      filteredProducts = products.filter((product) => {
+        return product.company === el.dataset.id;
+      });
     }
+      searchInput.value = '';
+    displayProducts(filteredProducts);
   }
-//   console.log(products);
 });

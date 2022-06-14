@@ -1,13 +1,19 @@
-const result = document.querySelector('#result');
+const url = "./api/people.json";
+const btn = document.querySelector("button");
+btn.addEventListener("click", async () => {
+  const response = await fetch(url);
+  const data = await response.json();
+  displayItems(data);
+});
 
-// create empty element
-const bodyDiv = document.createElement('div');
-//
-// create text node
-// const text = document.createTextNode("i'm a text node");
-// bodyDiv.appendChild(text);
-bodyDiv.innerHTML = `now i'm this`
-
-document.body.appendChild(bodyDiv);
-bodyDiv.classList.add('blue')
-console.log(bodyDiv.innerHTML);
+const displayItems = (items) => {
+  const displayData = items
+    .map((item) => {
+      const { name } = item;
+      return `<p>${name}</p>`;
+    })
+    .join("");
+  const element = document.createElement("div");
+  element.innerHTML = displayData;
+  document.body.appendChild(element);
+};

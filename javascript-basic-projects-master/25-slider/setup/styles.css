@@ -246,3 +246,29 @@ h4 {
 }
 
 /* MORE CSS FOR JS */
+*{
+  /* border: 1px solid red; */
+}
+.slide-container{
+  display: flex;
+  position: relative;
+  height: 450px;
+  overflow: hidden;
+  /* background: red; */
+}
+.slide{
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+}
+.slide.active{
+  opacity: 1;
+  transform: translateX(0);
+}
+.slide.next{
+  transform: translateX(100%);
+}
+.slide.last{
+  transform: translateX(-100%);
+}

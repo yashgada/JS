@@ -413,3 +413,6 @@ Stripe Styles
   color: var(--clr-grey-5);
   margin-right: 1rem;
 }
+*{
+  /* border: 1px solid red; */
+}

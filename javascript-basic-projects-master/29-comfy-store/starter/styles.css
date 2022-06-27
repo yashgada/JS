@@ -775,3 +775,6 @@ Single Product Page
     grid-template-columns: 1fr 1fr;
   }
 }
+*{
+  /* border: 1px solid red; */
+}

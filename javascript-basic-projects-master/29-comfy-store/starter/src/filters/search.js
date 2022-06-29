@@ -14,7 +14,7 @@ const setupSearch = (store) => {
           return product;
         }
       });
-      display(newStore, getElement(".products-container"));
+      display(newStore, getElement(".products-container"), true);
       //   in case there are no products matching search, we can display a message. Doing this after calling display is fine, as newStore would be simply empty
       if (newStore.length < 1) {
         const products = getElement(".products-container");
@@ -24,7 +24,7 @@ const setupSearch = (store) => {
       }
     } else {
       // need the if else loop to show all products when input is empty, not none
-      display(store, getElement(".products-container"));
+      display(store, getElement(".products-container"), true);
     }
   });
 };

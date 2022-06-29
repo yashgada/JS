@@ -32,6 +32,13 @@ export const addToCart = (id) => {
   } else {
     // item already in cart, update values
     console.log("product already in cart");
+    // here, we have a function to increase the amount for product with id, and return the new amount, so we can update the DOM too
+    const amount = increaseAmount(id);
+    // querySelectorAll gives a nodeList, need to expand that into an array
+    const items = [...cartItemsDOM.querySelectorAll(".cart-item-amount")];
+    const newAmount = items.find((item) => item.dataset.id === id);
+    newAmount.textContent = amount;
+    console.log(items);
   }
   // add one to the item count
   displayCartItemCount();
@@ -62,7 +69,74 @@ function displayCartItemsDOM() {
     addToCartDOM(cartItem);
   });
 }
-function setupCartFunctionality() {}
+
+function removeItem(id) {
+  cart = cart.filter((item) => item.id !== id);
+}
+
+function increaseAmount(id) {
+  // increases the amount of item with id, and returns the new amount
+  let newAmount;
+  cart = cart.map((cartItem) => {
+    if (cartItem.id === id) {
+      newAmount = cartItem.amount + 1;
+      cartItem = { ...cartItem, amount: newAmount };
+    }
+    return cartItem;
+  });
+  return newAmount;
+}
+function decreaseAmount(id) {
+  // increases the amount of item with id, and returns the new amount
+  let newAmount;
+  cart = cart.map((cartItem) => {
+    if (cartItem.id === id) {
+      newAmount = cartItem.amount - 1;
+      cartItem = { ...cartItem, amount: newAmount };
+    }
+    return cartItem;
+  });
+  return newAmount;
+}
+
+function setupCartFunctionality() {
+  // this function updates the cart in DOM and local storage BOTH in one go
+  cartItemsDOM.addEventListener("click", (e) => {
+    const element = e.target;
+    const parent = element.parentElement;
+    const id = element.dataset.id;
+    const parentID = parent.dataset.id;
+
+    // remove
+    if (element.classList.contains("cart-item-remove-btn")) {
+      // this removes from the cart variable
+      removeItem(id);
+      // this removes from the DOM
+      parent.parentElement.remove();
+    }
+    // increase
+    if (parent.classList.contains("cart-item-increase-btn")) {
+      // remember to send parentID, and not element's id in this case. Element won't have an ID
+      const newAmount = increaseAmount(parentID);
+      parent.nextElementSibling.textContent = newAmount;
+    }
+    // decrease
+    if (parent.classList.contains("cart-item-decrease-btn")) {
+      const newAmount = decreaseAmount(parentID);
+      if (newAmount === 0) {
+        removeItem(parentID);
+        parent.parentElement.parentElement.remove();
+      } else {
+        parent.previousElementSibling.textContent = newAmount;
+      }
+    }
+
+    // before setting up the logic of this function, we know that after updating cart functionalities, like add, reduce, remove, we need to fire the following functions:
+    displayCartItemCount();
+    displayCartTotal();
+    setStorageItem("cart", cart);
+  });
+}
 
 const init = () => {
   console.log(cart);

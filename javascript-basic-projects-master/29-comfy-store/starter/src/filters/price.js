@@ -22,7 +22,7 @@ const setupPrice = (store) => {
 
     // let newStore = store.filter((product) => product.price <= value);
     let newStore = store.filter((product) => product.price <= value);
-    display(newStore, getElement(".products-container"));
+    display(newStore, getElement(".products-container"), true);
     if (newStore.length < 1) {
       const products = getElement(".products-container");
       products.innerHTML = `<h3 class="filter-error">sorry, no products match your search`;

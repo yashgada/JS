@@ -22,7 +22,7 @@ const setupCompanies = (store) => {
           return product.company === element.textContent;
         });
       }
-      display(newStore, getElement(".products-container"));
+      display(newStore, getElement(".products-container"), true);
     }
   });
 };

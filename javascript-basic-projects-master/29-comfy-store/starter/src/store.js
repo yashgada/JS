@@ -1,4 +1,5 @@
 import { getStorageItem, setStorageItem } from "./utils.js";
+// store is an array of product objects
 let store = getStorageItem("store");
 const setupStore = (products) => {
   store = products.map((product) => {
@@ -14,5 +15,8 @@ const setupStore = (products) => {
 };
 // console.log("from store");
 // console.log(store);
-const findProduct = () => {};
+const findProduct = (id) => {
+  const product = store.find((product) => product.id === id);
+  return product;
+};
 export { store, setupStore, findProduct };
